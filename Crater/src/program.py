@@ -4,15 +4,16 @@ import random
 # Command Detection
 #################################
 
-TOKENS = ['command: help()', 'command:', 'command: import', 'command: multiline()']
+TOKENS = ['help()', ' ', 'import', 'multiline()']
 IMPORTS = ['random', 'imp']
 MULTITOK = []
-MULTITOKENS = ['import', 'log[', ']']
+MULTITOKENS = ['import', 'log[', ']', 'random[']
+PACKAGES = []
 y = False
 used = False
 
 def write(r):
-	if r == 'command:':
+	if r == ' ':
 		error('Invalid Arguments')
 	if r not in TOKENS:
 		error('Invalid Resource')
@@ -23,8 +24,11 @@ def write(r):
 		if importt not in IMPORTS:
 			error('Invalid Import')
 		else:
-			importfun(IMPORTS[importt])
-			print('Importing ' + importt)
+			if importt == 'random':
+				importfun('random')
+			elif importt == 'imp':
+				importfun('imp')
+			print('Imported ' + importt)
 	if r == TOKENS[3]:
 		line = 1
 		y = True
@@ -41,6 +45,7 @@ def write(r):
 def runc(c):
 
 	result = ' '
+	res = []
 	on = ' '
 	current = 0
 	for i in range(len(c)):
@@ -59,7 +64,22 @@ def runc(c):
 				result = result.split("log[")
 				print(result[1])
 			elif on == 'text':
-				result += c[current]		
+				res.append(on)
+		if c[current] == 'random':
+			if 'random' in PACKAGES:
+				on = 'rand['
+			if on == 'rand':
+				on = 'Num'
+			if on == 'rand':
+				if c[current] == ']':
+					on = ' '
+					res = res.split("random[")
+					print(random.randrange(result[0], result[1]))
+				elif on == 'Num':
+					result += c[current] 
+			else:
+				error('Error, Package Not Imported')
+
 		current += 1
 used = True
 
@@ -83,7 +103,9 @@ def importfun(lib):
 		imp()
 
 def rand():
-	print('random')
+	PACKAGES.append('random')
+	rand = True
 
 def imp():
-	print('imp')
+	PACKAGES.append('imp')
+	imp = True
