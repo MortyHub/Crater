@@ -37,4 +37,13 @@ def importfun(lib):
 	elif lib == 'random':
 		rand()
 	elif lib == 'imp':
-		
+		imp()
+
+def math():
+	print('math')
+
+def rand():
+	print('random')
+
+def imp():
+	print('imp')
