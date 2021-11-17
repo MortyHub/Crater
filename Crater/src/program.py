@@ -7,10 +7,11 @@ import random
 TOKENS = ['help()', ' ', 'import', 'multiline()']
 IMPORTS = ['random', 'imp']
 MULTITOK = []
-MULTITOKENS = ['import', 'log[', ']', 'random[']
-PACKAGES = []
+MULTITOKENS = ['import(', 'log[', ']', ')']
 y = False
 used = False
+rand = False
+imp = False
 
 def write(r):
 	if r == ' ':
@@ -24,11 +25,8 @@ def write(r):
 		if importt not in IMPORTS:
 			error('Invalid Import')
 		else:
-			if importt == 'random':
-				importfun('random')
-			elif importt == 'imp':
-				importfun('imp')
-			print('Imported ' + importt)
+			importfun(IMPORTS[importt])
+			print('Importing ' + importt)
 	if r == TOKENS[3]:
 		line = 1
 		y = True
@@ -45,15 +43,13 @@ def write(r):
 def runc(c):
 
 	result = ' '
-	res = []
 	on = ' '
 	current = 0
 	for i in range(len(c)):
-		if c[current] == 'import':
-			on = 'import'
-		if on == 'import':
-			importfun(c[current])
-		
+		if c[current] == 'import imp':
+			importfun('imp')
+		elif c[current] == 'import random':
+			importfun('random')
 		if c[current] == 'log[':
 			on = 'log'
 		if on == 'log':
@@ -64,24 +60,10 @@ def runc(c):
 				result = result.split("log[")
 				print(result[1])
 			elif on == 'text':
-				res.append(on)
-		if c[current] == 'random':
-			if 'random' in PACKAGES:
-				on = 'rand['
-			if on == 'rand':
-				on = 'Num'
-			if on == 'rand':
-				if c[current] == ']':
-					on = ' '
-					res = res.split("random[")
-					print(random.randrange(result[0], result[1]))
-				elif on == 'Num':
-					result += c[current] 
-			else:
-				error('Error, Package Not Imported')
-
+				result += c[current]		
 		current += 1
 used = True
+
 
 
 
@@ -103,9 +85,7 @@ def importfun(lib):
 		imp()
 
 def rand():
-	PACKAGES.append('random')
 	rand = True
 
 def imp():
-	PACKAGES.append('imp')
 	imp = True
