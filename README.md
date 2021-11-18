@@ -15,8 +15,6 @@ This is a programming language project. This language will have a console, file 
 
 Contributing is welcomed! 
 
-If Wanted To Contribute Then Do Contri() in the Crater Console
-
 
 
 
