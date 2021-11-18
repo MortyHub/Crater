@@ -7,7 +7,7 @@ import random
 TOKENS = ['help()', ' ', 'import', 'multiline()']
 IMPORTS = ['random', 'imp']
 MULTITOK = []
-MULTITOKENS = ['import(', 'log[', ']', ')']
+MULTITOKENS = ['import random', 'log[', ']', 'import imp']
 y = False
 used = False
 rand = False
@@ -86,6 +86,8 @@ def importfun(lib):
 
 def rand():
 	rand = True
+	print(rand)
 
 def imp():
 	imp = True
+	print(imp)
