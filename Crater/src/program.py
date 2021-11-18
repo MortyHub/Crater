@@ -4,14 +4,16 @@ import random
 # Command Detection
 #################################
 
-TOKENS = ['help()', ' ', 'import', 'multiline()']
-IMPORTS = ['random', 'imp']
+TOKENS = ['help()', ' ', 'import', 'multiline()', 'contri()', 'dice()']
+IMPORTS = ['imp']
 MULTITOK = []
 MULTITOKENS = ['import random', 'log[', ']', 'import imp']
 y = False
 used = False
 rand = False
 imp = False
+rand = 0.0
+rand1 = 0.0
 
 def write(r):
 	if r == ' ':
@@ -25,7 +27,7 @@ def write(r):
 		if importt not in IMPORTS:
 			error('Invalid Import')
 		else:
-			importfun(IMPORTS[importt])
+			importfun(IMPORTS[IMPORTS.index(importt)])
 			print('Importing ' + importt)
 	if r == TOKENS[3]:
 		line = 1
@@ -39,6 +41,10 @@ def write(r):
 				runc(MULTITOK)
 			else:
 				MULTITOK.append(mult)
+	if r == TOKENS[5]:
+		rand = int(input('>> '))
+		rand1 = int(input('>> '))
+		print(random.randrange(rand, rand1))
 		
 def runc(c):
 
@@ -79,15 +85,9 @@ def error(er):
 #################################
 
 def importfun(lib):
-	if lib == 'random':
-		rand()
-	elif lib == 'imp':
+	if lib == 'imp':
 		imp()
-
-def rand():
-	rand = True
-	print(rand)
 
 def imp():
 	imp = True
-	print(imp)
+	print('Successfully Imported IMP')
