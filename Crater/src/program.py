@@ -4,10 +4,11 @@ import random
 # Command Detection
 #################################
 
-TOKENS = ['help()', ' ', 'import', 'multiline()', 'contri()', 'dice()', 'createfile()']
+TOKENS = ['help()', ' ', 'import', 'multiline()', 'contri()', 'dice()', 'createfile()', 'stop()']
 IMPORTS = ['imp']
 MULTITOK = []
 MULTITOKENS = ['import random', 'log[', ']', 'import imp', 'depend()']
+VARIABLES = []
 y = False
 used = False
 rand = False
@@ -50,6 +51,8 @@ def write(r):
 		for i in range(1):
 			Ex =  '\n'.join([str(elem) for elem in MULTITOK]) 
 			f.write(str(Ex) + "%d\r\n" % (i+1))
+	if r == TOKENS[7]:
+		exit()
 
 
 		
