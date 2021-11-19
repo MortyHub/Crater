@@ -4,11 +4,12 @@ import random
 # Command Detection
 #################################
 
-TOKENS = ['help()', ' ', 'import', 'multiline()', 'contri()', 'dice()', 'createfile()', 'stop()']
+TOKENS = ['help(', ' ', 'import', 'multiline()', 'contri()', 'dice()', 'createfile()', 'stop()']
 IMPORTS = ['imp']
 MULTITOK = []
 MULTITOKENS = ['import random', 'log[', ']', 'import imp', 'depend()']
 VARIABLES = []
+VALUES = []
 y = False
 used = False
 rand = False
@@ -16,7 +17,10 @@ imp = False
 rand = 0.0
 rand1 = 0.0
 
+
+
 def write(r):
+
 	if r == ' ':
 		error('Invalid Arguments')
 	if r not in TOKENS:
