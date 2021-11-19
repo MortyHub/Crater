@@ -4,10 +4,10 @@ import random
 # Command Detection
 #################################
 
-TOKENS = ['help()', ' ', 'import', 'multiline()', 'contri()', 'dice()']
+TOKENS = ['help()', ' ', 'import', 'multiline()', 'contri()', 'dice()', 'createfile()']
 IMPORTS = ['imp']
 MULTITOK = []
-MULTITOKENS = ['import random', 'log[', ']', 'import imp']
+MULTITOKENS = ['import random', 'log[', ']', 'import imp', 'depend()']
 y = False
 used = False
 rand = False
@@ -45,6 +45,13 @@ def write(r):
 		rand = int(input('>> '))
 		rand1 = int(input('>> '))
 		print(random.randrange(rand, rand1))
+	if r == TOKENS[6]:
+		f = open("Crater.cra", "a+")
+		for i in range(1):
+			Ex =  '\n'.join([str(elem) for elem in MULTITOK]) 
+			f.write(str(Ex) + "%d\r\n" % (i+1))
+
+
 		
 def runc(c):
 
@@ -69,6 +76,27 @@ def runc(c):
 				result += c[current]		
 		current += 1
 used = True
+
+"""
+def run(c, a):
+	on = ' '
+	current = 1
+	STRFUN = []
+	for i in range(a):
+		print('dud')
+		if c[current] == 'mb -b':
+			leng = len(c)
+			print(leng)
+		elif c[current] == 'def str() {':
+			on = '{'
+		if on == '{':
+			STRFUN.append(c[current])
+		if c[current] == '}':
+			print('in')
+			if 'log[' in STRFUN:
+				runc(c)
+			on = ''
+"""
 
 
 
