@@ -4,7 +4,7 @@ import random
 # Command Detection
 #################################
 
-TOKENS = ['help(', ' ', 'import', 'multiline()', 'contri()', 'dice()', 'createfile()', 'stop()']
+TOKENS = ['help()', ' ', 'import', 'multiline()', 'contri()', 'dice()', 'createfile()', 'stop()']
 IMPORTS = ['imp']
 MULTITOK = []
 MULTITOKENS = ['import random', 'log[', ']', 'import imp', 'depend()']
@@ -16,7 +16,6 @@ rand = False
 imp = False
 rand = 0.0
 rand1 = 0.0
-
 
 
 def write(r):
@@ -51,17 +50,19 @@ def write(r):
 		rand1 = int(input('>> '))
 		print(random.randrange(rand, rand1))
 	if r == TOKENS[6]:
-		f = open("Crater.cra", "a+")
-		for i in range(1):
-			Ex =  '\n'.join([str(elem) for elem in MULTITOK]) 
-			f.write(str(Ex) + "%d\r\n" % (i+1))
+		if imp == True:
+			f = open("Crater.cra", "a+")
+			for i in range(1):
+				Ex =  '\n'.join([str(elem) for elem in MULTITOK]) 
+				f.write(str(Ex) + "%d\r\n" % (i+1))
+		else:
+			error('port() function not specified')		
 	if r == TOKENS[7]:
 		exit()
 
 
 		
 def runc(c):
-
 	result = ' '
 	on = ' '
 	current = 0
@@ -82,6 +83,12 @@ def runc(c):
 			elif on == 'text':
 				result += c[current]		
 		current += 1
+		if c[current] == 'port(':
+			if imp == True:
+				on = 'PORT'
+			else:
+				error('port() function not specified')
+		
 used = True
 
 """
@@ -113,7 +120,7 @@ def run(c, a):
 #################################
 
 def error(er):
-	print(er)
+	print('Error: ' + er)
 
 #################################
 # Imports
