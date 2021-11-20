@@ -146,7 +146,7 @@ def preset():
 	os.mkdir('Crater-Library/src/scripts')
 	os.mkdir('Crater-Library/src/items')
 	os.mkdir('Crater-Library/src/assets')
-	f = open('Crater-Library/src/scripts/main.cra', 'a+')
+	open('Crater-Library/src/scripts/main.cra', 'a+')
 
 #################################
 # Others
