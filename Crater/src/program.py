@@ -7,10 +7,10 @@ import os
 
 TOKENS = [
     'help()', ' ', 'import', 'multiline()', 'contri()', 'dice()',
-    'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()'
+    'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()', '='
 ]
 IMPORTS = ['imp']
-MULTITOKENS = ['import random', 'log[', ']', 'import imp', 'depend()']
+MULTITOKENS = ['log[', ']', 'import imp', 'depend()']
 VARIABLES = []
 VALUES = []
 V = []
@@ -29,7 +29,7 @@ def write(r):
     if r not in TOKENS:
         error('Invalid Resource')
     if r == TOKENS[0]:
-        print('This Feature Is Not Yet Available')
+        print('import\nmultiline\nlog\ndice\nhelp\nstop')
     if r == TOKENS[2]:
         importt = input('>> ')
         if importt not in IMPORTS:
@@ -79,7 +79,6 @@ def write(r):
                 error('File Type Invalid')
         else:
             error('imp() not defined')
- 
 
 
 def runc(c):
