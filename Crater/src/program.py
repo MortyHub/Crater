@@ -7,10 +7,13 @@ import os
 
 TOKENS = [
     'help()', ' ', 'import', 'multiline()', 'contri()', 'dice()',
-    'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()', '='
+    'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()', 'c -mb project file'
 ]
 IMPORTS = ['imp', 'lib']
-MULTITOKENS = ['log[', ']', 'import imp', 'depend()']
+MULTITOKENS = [
+	'log[', ']', 'import imp', 'depend()', 'import lib'
+	]
+LOADER = ['###################','=##################', '==#################', '===###############', '====###############', '=====#############', '======#############', '=======############', '========###########', '=========##########', '==========#########', '===========########', '============#######', '=============######', '==============#####', '===============####', '================###', '=================##', '==================#', '===================']
 VARIABLES = []
 VALUES = []
 V = []
@@ -76,7 +79,8 @@ def write(r):
                 error('File Type Invalid')
         else:
             error('imp() not defined')
-
+    if r == TOKENS[10]:
+        preset()
 
 def runc(c):
     result = ' '
@@ -125,6 +129,17 @@ def importfun(lib):
         global libr
         libr = True
 
+#################################
+# File Loader
+#################################
+
+def preset():
+	os.mkdir('Crater-Library')
+	os.mkdir('Crater-Library/src')
+	os.mkdir('Crater-Library/src/scripts')
+	os.mkdir('Crater-Library/src/items')
+	os.mkdir('Crater-Library/src/assets')
+	f = open('Crater-Library/src/scripts/main.cra', 'a+')
 
 #################################
 # Others
@@ -133,3 +148,4 @@ def importfun(lib):
 
 def colored(r, g, b, text):
     return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
+
