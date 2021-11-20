@@ -8,14 +8,22 @@ import os
 
 TOKENS = [
     'help()', ' ', 'import', 'multiline()', 'contri()', 'dice()',
-    'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()', 'c -mb project create', '!-', 'lib.project.open()'
+    'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()',
+    'c -mb project create', '!-', 'lib.project.open()'
 ]
 IMPORTS = ['imp', 'lib']
 MULTITOKENS = [
-	'log[', ']', 'import imp', 'depend()', 'import lib', '!-', 'project()'
-	]
+    'log[', ']', 'import imp', 'depend()', 'import lib', '!-', 'project()'
+]
 LOADER = [
-	'###################', '=##################', '==#################', '===################', '====###############', '=====##############', '======#############', '=======############', '========###########', '=========##########', '==========#########', '===========########', '============#######', '=============######', '==============#####', '===============####', '================###', '=================##', '==================#', '===================']
+    '###################', '=##################', '==#################',
+    '===################', '====###############', '=====##############',
+    '======#############', '=======############', '========###########',
+    '=========##########', '==========#########', '===========########',
+    '============#######', '=============######', '==============#####',
+    '===============####', '================###', '=================##',
+    '==================#', '==================='
+]
 VARIABLES = []
 VALUES = []
 V = []
@@ -62,10 +70,10 @@ def write(r):
         print(random.randrange(rand, rand1))
     if r == TOKENS[6]:
         if imp == True:
-        	f = open("Crater.cra", "a+")
-        	for i in range(1):
-                 Ex = '\n'.join([str(elem) for elem in MULTITOK])
-                 f.write(str(Ex) + "%d\r\n" % (i + 1))
+            f = open("Crater.cra", "a+")
+            for i in range(1):
+                Ex = '\n'.join([str(elem) for elem in MULTITOK])
+                f.write(str(Ex) + "%d\r\n" % (i + 1))
         else:
             error('imp() not defined')
     if r == TOKENS[7]:
@@ -86,17 +94,16 @@ def write(r):
 
     if r == TOKENS[10]:
         if libr == True:
-        	preset()
+            preset()
         else:
             error('c, mb, project not defined')
-	
+
     if r == TOKENS[12]:
         if libr == True:
-        	s = input('>> ')
-        	find(s)
+            s = input('>> ')
+            find(s)
         else:
             error('lib() function not defined')
-
 
 
 def runc(c):
@@ -147,18 +154,21 @@ def importfun(lib):
         global libr
         libr = True
 
+
 #################################
 # File Loader
 #################################
 
+
 def preset():
-	os.mkdir('Crater-Library')
-	os.mkdir('Crater-Library/src')
-	os.mkdir('Crater-Library/src/scripts')
-	os.mkdir('Crater-Library/src/items')
-	os.mkdir('Crater-Library/src/assets')
-	os.mkdir('Crater-Library/src/scripts/enviorments')
-	open('Crater-Library/src/scripts/main.cra', 'a+')
+    os.mkdir('Crater-Library')
+    os.mkdir('Crater-Library/src')
+    os.mkdir('Crater-Library/src/scripts')
+    os.mkdir('Crater-Library/src/items')
+    os.mkdir('Crater-Library/src/assets')
+    os.mkdir('Crater-Library/src/scripts/enviorments')
+    open('Crater-Library/src/scripts/main.cra', 'a+')
+
 
 #################################
 # Others
@@ -167,4 +177,3 @@ def preset():
 
 def colored(r, g, b, text):
     return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
-
