@@ -1,3 +1,4 @@
+from Crater.src.libraries.lib.lib import find
 import random
 import os
 
@@ -7,11 +8,11 @@ import os
 
 TOKENS = [
     'help()', ' ', 'import', 'multiline()', 'contri()', 'dice()',
-    'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()', 'c -mb project create', '!-'
+    'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()', 'c -mb project create', '!-', 'lib.project.open()'
 ]
 IMPORTS = ['imp', 'lib']
 MULTITOKENS = [
-	'log[', ']', 'import imp', 'depend()', 'import lib', '!-'
+	'log[', ']', 'import imp', 'depend()', 'import lib', '!-', 'project()'
 	]
 LOADER = [
 	'###################', '=##################', '==#################', '===################', '====###############', '=====##############', '======#############', '=======############', '========###########', '=========##########', '==========#########', '===========########', '============#######', '=============######', '==============#####', '===============####', '================###', '=================##', '==================#', '===================']
@@ -88,11 +89,21 @@ def write(r):
         	preset()
         else:
             error('c, mb, project not defined')
+	
+    if r == TOKENS[12]:
+        if libr == True:
+        	s = input('>> ')
+        	find(s)
+        else:
+            error('lib() function not defined')
+
+
 
 def runc(c):
     result = ' '
     on = ' '
     current = 0
+
     for i in range(len(c)):
         if c[current] == 'import imp':
             importfun('imp')
