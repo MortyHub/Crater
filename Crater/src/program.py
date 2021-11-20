@@ -9,7 +9,7 @@ TOKENS = [
     'help()', ' ', 'import', 'multiline()', 'contri()', 'dice()',
     'imp.createfile()', 'stop()', 'imp.port()', 'imp.grab()', '='
 ]
-IMPORTS = ['imp']
+IMPORTS = ['imp', 'lib']
 MULTITOKENS = ['log[', ']', 'import imp', 'depend()']
 VARIABLES = []
 VALUES = []
@@ -23,7 +23,7 @@ global MULTITOK
 
 
 def write(r):
-    MULTITOK = []
+    MULTITOK = ['']
     if r == ' ':
         error('Invalid Arguments')
     if r not in TOKENS:
@@ -54,16 +54,13 @@ def write(r):
         rand1 = int(input('>> '))
         print(random.randrange(rand, rand1))
     if r == TOKENS[6]:
-        if MULTITOK == V:
-            error('Nothing to export')
+        if imp == True:
+        	f = open("Crater.cra", "a+")
+        	for i in range(1):
+                 Ex = '\n'.join([str(elem) for elem in MULTITOK])
+                 f.write(str(Ex) + "%d\r\n" % (i + 1))
         else:
-            if imp == True:
-                f = open("Crater.cra", "a+")
-                for i in range(1):
-                    Ex = '\n'.join([str(elem) for elem in MULTITOK])
-                    f.write(str(Ex) + "%d\r\n" % (i + 1))
-            else:
-                error('imp() not defined')
+            error('imp() not defined')
     if r == TOKENS[7]:
         exit()
     if r == TOKENS[8]:
@@ -124,6 +121,9 @@ def importfun(lib):
     if lib == 'imp':
         global imp
         imp = True
+    if lib == 'lib':
+        global libr
+        libr = True
 
 
 #################################
