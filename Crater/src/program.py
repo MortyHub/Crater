@@ -109,6 +109,7 @@ def write(r):
 def runc(c):
     result = ' '
     on = ' '
+    rand = []
     current = 0
 
     for i in range(len(c)):
@@ -127,6 +128,16 @@ def runc(c):
                 print(result[1])
             elif on == 'text':
                 result += c[current]
+        if c[current] == 'dice(':
+            on = 'dice'
+        if on == 'dice':
+            if c[current] == ')':
+                on = ' '
+                print(rand)
+                print(random.randrange(int(rand[0]), int(rand[1])))
+            else:
+                rand.append(c[current])
+			
         current += 1
 
 
