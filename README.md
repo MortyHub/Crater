@@ -44,7 +44,7 @@ Because its new and totally not because we dont know how to
 ## Support
 
 For support, email nickageddes09@gmail.com
-
+or join the discord server: https://discord.gg/GYBXDs75Qk
 
 
 
