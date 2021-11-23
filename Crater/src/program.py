@@ -1,7 +1,6 @@
 from Crater.src.libraries.lib.lib import find
 import random
 import os
-import time
 
 #################################
 # Command Detection
